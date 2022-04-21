@@ -9,8 +9,10 @@ import TempContext from "../context/TempContext";
 const MainBox = styled(Box)(({ theme }) => ({
     display: "flex",
     justifyContent: "space-between",
+    alignItems: "center",
     width: "70%",
     margin: "25px auto",
+    height: "150px",
     gap: "15px",
     [theme.breakpoints.down("md")]: {
         flexDirection: "column",
