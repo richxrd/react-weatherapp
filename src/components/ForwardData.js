@@ -3,6 +3,8 @@ import { styled, Box, Switch, Stack, Divider } from "@mui/material";
 import ForwardCard from "./ForwardCard";
 import { getTime, getDate, getCelcius } from "../utility";
 
+import TempContext from "../context/TempContext";
+
 const StyledContainer = styled(Box)(({ theme }) => ({
     backgroundColor: theme.palette.grey[900],
     color: "white",
@@ -51,7 +53,15 @@ const ForwardData = ({ hourlyData, dailyData, forward, onFowardChange }) => {
             <ForwardCard
                 key={weather.title}
                 title={weather.title}
-                temp={weather.temperature}
+                temp={
+                    <TempContext.Consumer>
+                        {(value) =>
+                            value === "fahrenheit"
+                                ? Math.round(weather.temperature)
+                                : getCelcius(weather.temperature)
+                        }
+                    </TempContext.Consumer>
+                }
                 weather={weather.weather}
                 precip={weather.precipitation}
             />

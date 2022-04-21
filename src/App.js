@@ -34,7 +34,7 @@ const App = () => {
 
     useEffect(() => {
         getLocationInfo(location);
-    }, []);
+    });
 
     const getLocationInfo = async (loc) => {
         try {
