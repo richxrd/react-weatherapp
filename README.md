@@ -1,6 +1,6 @@
 # WeatherApp
 
-WeatherApp is an application that provides local weather forecasts for cities. You can find current, hourly, and daily weather information.
+WeatherApp is an application that provides local weather forecasts (current, hourly, and daily) for various locations.
 
 [Site Link](https://richxrd-react-weatherapp.netlify.app/)
 
