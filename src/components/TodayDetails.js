@@ -12,8 +12,9 @@ const MainBox = styled(Box)(({ theme }) => ({
     alignItems: "center",
     width: "70%",
     margin: "25px auto",
-    height: "150px",
+    height: "fit-content",
     gap: "15px",
+    padding: "25px 0",
     [theme.breakpoints.down("md")]: {
         flexDirection: "column",
     },

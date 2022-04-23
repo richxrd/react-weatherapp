@@ -6,6 +6,7 @@ const StyledBox = styled(Box)(({ theme }) => ({
     flexDirection: "column",
     gap: "25px",
     textAlign: "center",
+    whiteSpace: "nowrap",
     [theme.breakpoints.down("md")]: {
         flexDirection: "row",
         justifyContent: "space-between",

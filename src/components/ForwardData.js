@@ -7,6 +7,7 @@ import TempContext from "../context/TempContext";
 
 const StyledContainer = styled(Box)(({ theme }) => ({
     backgroundColor: theme.palette.grey[900],
+    overflow: "auto",
     color: "white",
     padding: "30px 0",
 }));

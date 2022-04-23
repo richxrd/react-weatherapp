@@ -4,21 +4,33 @@ import InfoCard from "./InfoCard";
 
 const StyledBox = styled(Box)(({ theme }) => ({
     width: "30%",
+    [theme.breakpoints.down("md")]: {
+        textAlign: "center",
+        width: "90%",
+    },
 }));
 
 const StyledStack = styled(Stack)(({ theme }) => ({
     width: "60%",
+
+    [theme.breakpoints.down("md")]: {
+        width: "90%",
+    },
 }));
 
 const ForwardCard = ({ title, temp, weather, precip }) => {
     return (
         <Stack
-            direction="row"
-            justifyContent="space-between"
+            direction={{ xs: "column", sm: "column", md: "row" }}
+            justifyContent="center"
+            spacing={2}
             alignItems={"center"}
         >
             <StyledBox>{title}</StyledBox>
-            <StyledStack direction="row" justifyContent="space-between">
+            <StyledStack
+                direction={{ xs: "column", sm: "column", md: "row" }}
+                justifyContent="space-between"
+            >
                 <InfoCard title="Temperature" content={temp} temp />
                 <InfoCard title="Weather" content={weather} />
                 <InfoCard title="Precipitation" content={precip} percent />

@@ -19,6 +19,7 @@ const StyledBox = styled(Box)(({ theme }) => ({
 const StyledStack = styled(Stack)(({ theme }) => ({
     display: "flex",
     alignItems: "center",
+    whiteSpace: "nowrap",
     [theme.breakpoints.down("md")]: {
         margin: "auto",
     },
