@@ -14,7 +14,7 @@ const App = () => {
     const [isLoading, setIsLoading] = useState(true);
 
     const [temp, setTemp] = useState("fahrenheit");
-    const [location, setLocation] = useState("New York");
+    const [location, setLocation] = useState("");
     const [forward, setForward] = useState("hourly");
     const [current, setCurrent] = useState({});
     const [hourly, setHourly] = useState({});
@@ -33,7 +33,7 @@ const App = () => {
     };
 
     useEffect(() => {
-        getLocationInfo(location);
+        getLocationInfo("New York");
     }, []);
 
     const getLocationInfo = async (loc) => {
