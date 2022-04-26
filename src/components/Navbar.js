@@ -4,12 +4,11 @@ import {
     Button,
     InputBase,
     styled,
-    Toolbar,
     Switch,
+    Toolbar,
 } from "@mui/material";
 import { Box } from "@mui/system";
 
-// Styled Components
 const StyledAppBar = styled(AppBar)(({ theme }) => ({
     backgroundColor: theme.palette.grey[900],
 }));
@@ -46,8 +45,8 @@ const SearchBtn = styled(Button)(({ theme }) => ({
     padding: "0 25px",
 }));
 
-const Navbar = ({ onTempChange, onLocationChange }) => {
-    const [input, setInput] = useState("");
+const Navbar = ({ location, onTempChange, onLocationChange }) => {
+    const [input, setInput] = useState(location);
 
     const handleKeyPress = (e) => {
         if (e.keyCode === 13 && input.length > 0) {

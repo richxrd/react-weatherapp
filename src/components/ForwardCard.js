@@ -1,6 +1,6 @@
 import React from "react";
 import { styled, Stack, Box } from "@mui/material";
-import InfoCard from "./InfoCard";
+import WeatherItem from "./WeatherItem";
 
 const StyledBox = styled(Box)(({ theme }) => ({
     width: "30%",
@@ -31,9 +31,9 @@ const ForwardCard = ({ title, temp, weather, precip }) => {
                 direction={{ xs: "column", sm: "column", md: "row" }}
                 justifyContent="space-between"
             >
-                <InfoCard title="Temperature" content={temp} temp />
-                <InfoCard title="Weather" content={weather} />
-                <InfoCard title="Precipitation" content={precip} percent />
+                <WeatherItem title="Temperature" content={temp} temp />
+                <WeatherItem title="Weather" content={weather} />
+                <WeatherItem title="Precipitation" content={precip} percent />
             </StyledStack>
         </Stack>
     );

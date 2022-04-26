@@ -3,8 +3,6 @@ import { styled, Box, Switch, Stack, Divider } from "@mui/material";
 import ForwardCard from "./ForwardCard";
 import { getTime, getDate, getCelcius } from "../utility";
 
-import TempContext from "../context/TempContext";
-
 const StyledContainer = styled(Box)(({ theme }) => ({
     backgroundColor: theme.palette.grey[900],
     overflow: "auto",
@@ -25,20 +23,22 @@ const StyledSwitchBox = styled(Box)(({ theme }) => ({
     marginBottom: "50px",
 }));
 
-const ForwardData = ({ hourlyData, dailyData, forward, onFowardChange }) => {
-    hourlyData = hourlyData.slice(1, 25);
-    dailyData = dailyData.slice(1, 8);
+const Forward = ({ data, tempMode, forwardMode, onFowardChange }) => {
+    let { hourly, daily } = data;
 
-    const hourly = hourlyData.map((hourly) => {
+    hourly = hourly.slice(1, 25);
+    daily = daily.slice(1, 8);
+
+    const hourlyList = hourly.map((hour) => {
         return {
-            title: getTime(hourly.dt),
-            temperature: Math.round(hourly.temp),
-            weather: hourly.weather[0].main,
-            precipitation: Math.round(hourly.pop * 100),
+            title: getTime(hour.dt),
+            temperature: Math.round(hour.temp),
+            weather: hour.weather[0].main,
+            precipitation: Math.round(hour.pop * 100),
         };
     });
 
-    const daily = dailyData.map((daily) => {
+    const dailyList = daily.map((daily) => {
         return {
             title: getDate(daily.dt),
             temperature: Math.round(daily.temp.day),
@@ -47,7 +47,7 @@ const ForwardData = ({ hourlyData, dailyData, forward, onFowardChange }) => {
         };
     });
 
-    const weatherData = forward === "hourly" ? hourly : daily;
+    const weatherData = forwardMode === "hourly" ? hourlyList : dailyList;
 
     const renderList = weatherData.map((weather) => {
         return (
@@ -55,13 +55,9 @@ const ForwardData = ({ hourlyData, dailyData, forward, onFowardChange }) => {
                 key={weather.title}
                 title={weather.title}
                 temp={
-                    <TempContext.Consumer>
-                        {(value) =>
-                            value === "fahrenheit"
-                                ? Math.round(weather.temperature)
-                                : getCelcius(weather.temperature)
-                        }
-                    </TempContext.Consumer>
+                    tempMode === "fahrenheit"
+                        ? Math.round(weather.temperature)
+                        : getCelcius(weather.temperature)
                 }
                 weather={weather.weather}
                 precip={weather.precipitation}
@@ -93,5 +89,4 @@ const ForwardData = ({ hourlyData, dailyData, forward, onFowardChange }) => {
         </StyledContainer>
     );
 };
-
-export default ForwardData;
+export default Forward;

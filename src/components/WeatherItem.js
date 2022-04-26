@@ -13,7 +13,7 @@ const StyledBox = styled(Box)(({ theme }) => ({
     },
 }));
 
-const InfoCard = ({ title, content, temp, percent }) => {
+const WeatherItem = ({ title, content, temp, percent }) => {
     return (
         <StyledBox>
             <Typography fontWeight={500} variant="subtitle2">
@@ -28,4 +28,4 @@ const InfoCard = ({ title, content, temp, percent }) => {
     );
 };
 
-export default InfoCard;
+export default WeatherItem;

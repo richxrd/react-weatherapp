@@ -1,9 +1,6 @@
 import { Box, Typography, styled, Stack } from "@mui/material";
 import React from "react";
 
-import { getCelcius } from "../utility";
-import TempContext from "../context/TempContext";
-
 const StyledBox = styled(Box)(({ theme }) => ({
     display: "flex",
     flexDirection: "column",
@@ -25,7 +22,7 @@ const StyledStack = styled(Stack)(({ theme }) => ({
     },
 }));
 
-const LocationCard = ({ location, weather, temp, min, max }) => {
+const WeatherCard = ({ location, weather, temp, min, max }) => {
     return (
         <StyledBox>
             <Typography variant="h5">{location}</Typography>
@@ -35,35 +32,17 @@ const LocationCard = ({ location, weather, temp, min, max }) => {
 
             <StyledStack direction="row" gap={1}>
                 <Typography variant="h4">
-                    <TempContext.Consumer>
-                        {(value) =>
-                            value === "fahrenheit"
-                                ? Math.round(temp)
-                                : getCelcius(temp)
-                        }
-                    </TempContext.Consumer>
+                    {temp}
                     <span>&#176;</span>
                 </Typography>
                 <Typography variant="subtitle2" fontWeight={300}>
                     {"Min: "}
-                    <TempContext.Consumer>
-                        {(value) =>
-                            value === "fahrenheit"
-                                ? Math.round(min)
-                                : getCelcius(min)
-                        }
-                    </TempContext.Consumer>
+                    {min}
                     <span>&#176;</span>
                 </Typography>
                 <Typography variant="subtitle2" fontWeight={300}>
                     {`Max: `}
-                    <TempContext.Consumer>
-                        {(value) =>
-                            value === "fahrenheit"
-                                ? Math.round(max)
-                                : getCelcius(max)
-                        }
-                    </TempContext.Consumer>
+                    {max}
                     <span>&#176;</span>
                 </Typography>
             </StyledStack>
@@ -71,4 +50,4 @@ const LocationCard = ({ location, weather, temp, min, max }) => {
     );
 };
 
-export default LocationCard;
+export default WeatherCard;
